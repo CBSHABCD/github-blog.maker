@@ -1,0 +1,4 @@
+---
+name: seminar
+title: seminar
+---
