@@ -6,6 +6,8 @@ baseurl: ""
 url: "https://cbshabcd.github.io"
 language: 'ko-kr'
 
+destination: ./output
+
 # Social Profiles
 twitter_username:
 github_username: CBSHABCD
