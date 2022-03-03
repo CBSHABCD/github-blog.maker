@@ -4,7 +4,10 @@ layout: default
 
 <!-- Page Header -->
 {% if page.background %}
-<header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
+<header
+  class="masthead"
+  style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')"
+>
   {% else %}
   <header class="masthead">
     {% endif %}
@@ -23,100 +26,87 @@ layout: default
           </div>
         </div>
       </div>
-  </div>
-</header>
+    </div>
+  </header>
 
+  <div class="container">
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-header">
+          <a class="card-title" href="/project"> <h4>project</h4> </a>
+        </div>
 
+        <div class="card-body">
+          <!-- Home Post List -->
+          {% assign posts = site.categories.project %} {% for post in posts
+          limit : 5 %}
+          <article class="post-preview">
+            <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+              <h2 class="post-title">{{ post.title }}</h2>
+              {% if post.subtitle %}
+              <h4 class="post-subtitle">{{ post.subtitle }}</h3>
+              {% else %}
+              <h4 class="post-subtitle">
+                {{ post.excerpt | strip_html | truncatewords: 5 }}
+              </h4>
+              {% endif %}
+            </a>
+            <p class="post-meta">
+              Posted by {% if post.author %} {{ post.author }} {% else %} {{
+              site.author }} {% endif %} on {{ post.date | date: '%B %d, %Y' }}
+              &middot; {% include read_time.html content=post.content %}
+            </p>
+          </article>
 
+          <hr />
 
+          {% endfor %}
 
-<div class="container">
-  <div class="card-deck">
-    
-    <div class="card">
-      
-      <div class="card-header">
-        <h4>project</h4>
-      </div>
-
-	  <div class="card-body">
-		  <!-- Home Post List -->
-		{% assign posts = site.categories.project %}
-		{% for post in posts limit : 5 %}
-		<article class="post-preview">
-			<a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-			<h2 class="post-title">{{ post.title }}</h2>
-			{% if post.subtitle %}
-			<h3 class="post-subtitle">{{ post.subtitle }}</h3>
-			{% else %}
-			<h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 5 }}</h3>
-			{% endif %}
-			</a>
-			<p class="post-meta">Posted by
-			{% if post.author %}
-			{{ post.author }}
-			{% else %}
-			{{ site.author }}
-			{% endif %}
-			on
-			{{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}            
-			</p>
-		</article>
-
-		<hr>
-
-		{% endfor %}
-
-		<!-- Pager -->
-		<!-- <div class="clearfix">
+          <!-- Pager -->
+          <!-- <div class="clearfix">
 			<a class="btn btn-primary float-right" href="{{"/project" | relative_url }}">View All Posts &rarr;</a>
 		</div> -->
-	  </div>
-    </div>
-  
+        </div>
+      </div>
 
-  
-    <div class="card">
-		<div class="card-header">
-			<h4>seminar</h4>
-		</div>
-      
-		<div class="card-body">
-			<!-- Home Post List -->
-			{% assign posts = site.categories.seminar %}
-			{% for post in posts limit : 5 %}
+      <div class="card">
+        <div class="card-header">
+          <a href="/seminar" class="card-title"><h4>seminar</h4></a>
+        </div>
 
-			<article class="post-preview">
-				<a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-				<h2 class="post-title">{{ post.title }}</h2>
-				{% if post.subtitle %}
-				<h3 class="post-subtitle">{{ post.subtitle }}</h3>
-				{% else %}
-				<h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 5 }}</h3>
-				{% endif %}
-				</a>
-				<p class="post-meta">Posted by
-				{% if post.author %}
-				{{ post.author }}
-				{% else %}
-				{{ site.author }}
-				{% endif %}
-				on
-				{{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}            
-				</p>
-			</article>
+        <div class="card-body">
+          <!-- Home Post List -->
+          {% assign posts = site.categories.seminar %} 
+          {% for post in posts limit : 5 %}
 
-			<hr>
+          <article class="post-preview">
+            <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+              <h2 class="post-title">{{ post.title }}</h2>
+              {% if post.subtitle %}
+              <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+              {% else %}
+              <h3 class="post-subtitle">
+                {{ post.excerpt | strip_html | truncatewords: 5 }}
+              </h3>
+              {% endif %}
+            </a>
+            <p class="post-meta">
+              Posted by {% if post.author %} {{ post.author }} {% else %} {{
+              site.author }} {% endif %} on {{ post.date | date: '%B %d, %Y' }}
+              &middot; {% include read_time.html content=post.content %}
+            </p>
+          </article>
 
-			{% endfor %}
+          <hr />
 
-			<!-- Pager -->
-			<!-- <div class="clearfix">
+          {% endfor %}
+
+          <!-- Pager -->
+          <!-- <div class="clearfix">
 				<a class="btn btn-primary float-right" href="{{"/seminar" | relative_url }}">View All Posts &rarr;</a>
 			</div> -->
-		</div>
+        </div>
+      </div>
     </div>
-
   </div>
-</div>
-
+</header>
