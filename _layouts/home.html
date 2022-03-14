@@ -33,7 +33,7 @@ layout: default
     <div class="card-deck">
       <div class="card">
         <div class="card-header">
-          <a class="card-title" href="/project"> <h4>project</h4> </a>
+          <a class="card-title" href="/project"> <h5>project</h5> </a>
         </div>
 
         <div class="card-body">
@@ -41,21 +41,24 @@ layout: default
           {% assign posts = site.categories.project %} {% for post in posts
           limit : 5 %}
           <article class="post-preview">
-            <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+            <a
+              href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}"
+            >
               <h2 class="post-title">{{ post.title }}</h2>
-              {% if post.subtitle %}
-              <h4 class="post-subtitle">{{ post.subtitle }}</h3>
-              {% else %}
-              <h4 class="post-subtitle">
-                {{ post.excerpt | strip_html | truncatewords: 5 }}
-              </h4>
-              {% endif %}
+              <!-- {% if post.subtitle %} -->
+              <!-- <h6 class="post-subtitle">{{ post.subtitle }}</h3> -->
+              <!-- {% else %} -->
+              <!-- <h6 class="post-subtitle"> -->
+              <!-- {{ post.excerpt | strip_html | truncatewords: 5 }} -->
+              <!-- </h6> -->
+              <!-- {% endif %} -->
+              <p class="post-meta">
+                Posted by {% if post.author %} {{ post.author }} {% else %} {{
+                site.author }} {% endif %} on {{ post.date | date: '%B %d, %Y'
+                }}
+                <!-- &middot; {% include read_time.html content=post.content %} -->
+              </p>
             </a>
-            <p class="post-meta">
-              Posted by {% if post.author %} {{ post.author }} {% else %} {{
-              site.author }} {% endif %} on {{ post.date | date: '%B %d, %Y' }}
-              &middot; {% include read_time.html content=post.content %}
-            </p>
           </article>
 
           <hr />
@@ -76,11 +79,13 @@ layout: default
 
         <div class="card-body">
           <!-- Home Post List -->
-          {% assign posts = site.categories.seminar %} 
-          {% for post in posts limit : 5 %}
+          {% assign posts = site.categories.seminar %} {% for post in posts
+          limit : 5 %}
 
           <article class="post-preview">
-            <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+            <a
+              href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}"
+            >
               <h2 class="post-title">{{ post.title }}</h2>
               {% if post.subtitle %}
               <h3 class="post-subtitle">{{ post.subtitle }}</h3>
